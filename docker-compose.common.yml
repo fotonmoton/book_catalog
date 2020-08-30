@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:8
+    # to allow node mysql driver to conect with plain text password
+    # https://github.com/docker-library/mysql/issues/454
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: test
+    ports:
+      - '6000:3306'
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  api:
+    build: .
+    init: true
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - '5000:3000'

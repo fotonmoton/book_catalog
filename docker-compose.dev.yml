@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  db:
+    volumes:
+      - ./mysql_test:/var/lib/mysql
+
+  api:
+    command: run start:dev
+    volumes:
+      - '.:/home/node'

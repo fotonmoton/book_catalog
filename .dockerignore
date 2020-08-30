@@ -390,6 +390,5 @@ Temporary Items
 docker-compose.yml
 .env
 dist
-.config
 mysql
 mysql_test

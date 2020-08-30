@@ -8,7 +8,7 @@ import { AuthorModule } from './author/author.module';
 // Ideally credentials should be stored in secure place and passed by env.
 const DatabaseModule = TypeOrmModule.forRoot({
   type: 'mysql',
-  host: '0.0.0.0',
+  host: 'db',
   port: 3306,
   username: 'test',
   password: 'test',
