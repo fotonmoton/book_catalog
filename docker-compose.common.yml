@@ -18,9 +18,15 @@ services:
 
   api:
     build: .
+    # needed for node conteiner to receive process signals such as Ctrl+C
     init: true
     depends_on:
       - db
+    # There is a possibility that database container starts after api container
+    # already initialized. This would cause api container to crash.
+    # At some point db will finish initialization and api will start properly.
+    # Api code can have unhandled exceptions which also will crash whole process
+    # and this option gives oportunity to start process from scratch automatically.
     restart: always
     ports:
       - '5000:3000'

@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npm run lint && npm run tsc && npm run build
+
 USER node
 
 ENTRYPOINT [ "npm" ]

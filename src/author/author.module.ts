@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AuthorController } from './author.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Author } from './author.entity';
+import { Author } from './author.model';
+import { AuthroResolver } from './author.resolver';
+import { Book } from 'src/book/book.model';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Author])],
-  controllers: [AuthorController],
+  imports: [
+    // this two lines are repeated in multiple places
+    TypeOrmModule.forFeature([Author]),
+    TypeOrmModule.forFeature([Book]),
+  ],
+  providers: [AuthroResolver],
 })
 export class AuthorModule {}

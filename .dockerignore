@@ -387,7 +387,10 @@ Temporary Items
 
 =======
 # Local
-docker-compose.yml
+docker-compose.common.yml
+docker-compose.dev.yml
+docker-compose.prod.yml
+Dockerfile
 .env
 dist
 mysql
